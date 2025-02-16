@@ -1,0 +1,23 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions)",
+  "homepage": "https://github.com/TimeToCodeSomething/frontend-project-46#readme",
+  "bugs": {
+    "url": "https://github.com/TimeToCodeSomething/frontend-project-46/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimeToCodeSomething/frontend-project-46.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "gendiff.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "commander": "^13.1.0"
+  }
+}
