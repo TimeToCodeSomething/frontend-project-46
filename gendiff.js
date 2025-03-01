@@ -1,7 +1,7 @@
-import { Command } from "commander";
+import {Command} from "commander";
 import jsonParse from "./jsonParse.js"
 import path from "path";
-
+import _ from "lodash";
 
 
 const program = new Command();
@@ -20,8 +20,25 @@ program
         const data1 = await jsonParse(fullPath1);
         const data2 = await jsonParse(fullPath2);
 
-        console.log(data1);
-        console.log(data2);
+        const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
+        let diffLines = [];
+
+        keys.forEach((key) => {
+            if (data1.hasOwnProperty(key) && data2.hasOwnProperty(key)) {
+                if (_.isEqual(data2[key], data1[key])) {
+                    diffLines.push(`    ${key}: ${data2[key]}`);
+                } else {
+                    diffLines.push(`  - ${key}: ${data1[key]}`);
+                    diffLines.push(`  + ${key}: ${data2[key]}`);
+                }
+            } else if (data1.hasOwnProperty(key)) {
+                diffLines.push(`  - ${key}: ${data1[key]}`);
+            } else {
+                diffLines.push(`  + ${key}: ${data2[key]}`);
+            }
+        });
+
+        console.log(`{\n${diffLines.join('\n')}\n}`);
     });
 
 program.parse(process.argv);
