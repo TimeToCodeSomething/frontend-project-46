@@ -1,8 +1,9 @@
-import {Command} from "commander";
-import parseFile from "./parsers.js"
-import buildDiff from "./buildDiff.js";
-import formatDiff from "./formatDiff.js";
-import path from "path";
+// @ts-check
+import {Command} from 'commander';
+import parseFile from './parsers.js';
+import buildDiff from './buildDiff.js';
+import formatDiff from './formatDiff.js';
+import path from 'path';
 
 
 const program = new Command();
@@ -23,10 +24,9 @@ program
 
             const diffTree = buildDiff(data1, data2);
             const output = formatDiff(diffTree);
-
             console.log(output);
         } catch (error) {
-            console.error('Error:', error.message);
+            throw new Error('Error'. error.message);
         }
     });
 

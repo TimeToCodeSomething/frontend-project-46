@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { describe, beforeAll, afterAll, test, expect } from "@jest/globals"
+import { describe, beforeAll, afterAll, test, expect } from '@jest/globals';
 
 
 describe('Тестирование gendiff CLI', () => {

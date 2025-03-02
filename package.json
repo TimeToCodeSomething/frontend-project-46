@@ -19,9 +19,11 @@
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
+    "@stylistic/eslint-plugin": "^4.1.0",
     "commander": "^13.1.0",
     "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "typescript-eslint": "^8.25.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.9",
