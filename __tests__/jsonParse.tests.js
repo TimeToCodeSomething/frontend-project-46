@@ -1,16 +1,19 @@
-import jsonParse from '../jsonParse.js';
-import fs from 'fs/promises';
 import path from 'path';
+import fs from 'fs/promises';
+import jsonParse from '../parsers.js';
 
-describe('jsonParse', () => {
-		test('корректно парсит валидный JSON', async () => {
-				const tempFile = path.join(__dirname, 'temp.json');
-				const jsonData = JSON.stringify({ key: 'value' });
-				await fs.writeFile(tempFile, jsonData);
+describe('Тестирование jsonParse', () => {
+		test('Парсит валидный JSON', async () => {
+				// Создаём временный файл
+				const tempFilePath = path.join(__dirname, 'temp.json');
+				await fs.writeFile(tempFilePath, JSON.stringify({ key: 'value' }));
 
-				const data = await jsonParse(tempFile);
+				// Проверяем, что jsonParse вернёт объект
+				const data = await jsonParse(tempFilePath);
 				expect(data).toEqual({ key: 'value' });
 
-				await fs.unlink(tempFile);
+				// Удаляем временный файл
+				await fs.unlink(tempFilePath);
 		});
 });
+

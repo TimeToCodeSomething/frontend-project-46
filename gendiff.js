@@ -1,7 +1,8 @@
 import {Command} from "commander";
-import jsonParse from "./jsonParse.js"
+import parseFile from "./parsers.js"
+import buildDiff from "./buildDiff.js";
+import formatDiff from "./formatDiff.js";
 import path from "path";
-import _ from "lodash";
 
 
 const program = new Command();
@@ -13,32 +14,20 @@ program
     .option('-f, --format [type]', 'output format')
     .arguments('<filepath1> <filepath2>')
     .action(async (filepath1, filepath2) => {
+        try {
+            const fullPath1 = path.resolve(filepath1);
+            const fullPath2 = path.resolve(filepath2);
 
-        const fullPath1 = path.resolve(filepath1);
-        const fullPath2 = path.resolve(filepath2);
+            const data1 = await parseFile(fullPath1);
+            const data2 = await parseFile(fullPath2);
 
-        const data1 = await jsonParse(fullPath1);
-        const data2 = await jsonParse(fullPath2);
+            const diffTree = buildDiff(data1, data2);
+            const output = formatDiff(diffTree);
 
-        const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
-        let diffLines = [];
-
-        keys.forEach((key) => {
-            if (data1.hasOwnProperty(key) && data2.hasOwnProperty(key)) {
-                if (_.isEqual(data2[key], data1[key])) {
-                    diffLines.push(`    ${key}: ${data2[key]}`);
-                } else {
-                    diffLines.push(`  - ${key}: ${data1[key]}`);
-                    diffLines.push(`  + ${key}: ${data2[key]}`);
-                }
-            } else if (data1.hasOwnProperty(key)) {
-                diffLines.push(`  - ${key}: ${data1[key]}`);
-            } else {
-                diffLines.push(`  + ${key}: ${data2[key]}`);
-            }
-        });
-
-        console.log(`{\n${diffLines.join('\n')}\n}`);
+            console.log(output);
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     });
 
 program.parse(process.argv);

@@ -1,10 +1,7 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
 import fs from 'fs/promises';
 import path from 'path';
+import { describe, beforeAll, afterAll, test, expect } from "@jest/globals"
 
-
-const execAsync = promisify(exec);
 
 describe('Тестирование gendiff CLI', () => {
 		let file1Path, file2Path;
