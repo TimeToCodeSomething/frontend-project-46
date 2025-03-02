@@ -15,7 +15,7 @@
   "type": "module",
   "main": "gendiff.js",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",

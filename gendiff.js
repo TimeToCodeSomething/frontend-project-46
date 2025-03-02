@@ -26,7 +26,8 @@ program
             const output = formatDiff(diffTree);
             console.log(output);
         } catch (error) {
-            throw new Error('Error'. error.message);
+            throw new Error(`Error: ${error.message}`);
+
         }
     });
 
