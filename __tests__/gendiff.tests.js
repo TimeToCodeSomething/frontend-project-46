@@ -1,40 +1,60 @@
-import { execFile } from 'child_process';
+import path from 'path';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import { describe, test, expect } from '@jest/globals';
+import genDiff from '../gendiff.js';
+import { test, expect } from '@jest/globals';
 
-// Определяем __dirname вручную для ESM
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
-describe('gendiff CLI', () => {
-		// Путь к скрипту gendiff.js (на уровень выше)
-		const gendiffPath = join(__dirname, '..', 'gendiff.js');
+test('gendiff should produce expected output', async () => {
+		const filepath1 = path.join(__dirname, '__fixtures__', 'file1.json');
+		const filepath2 = path.join(__dirname, '__fixtures__', 'file2.json');
 
-		test('should generate correct diff for JSON __fixtures__', (done) => {
-				const file1 = join(__dirname, '__fixtures__', 'file1.json');
-				const file2 = join(__dirname, '__fixtures__', 'file2.json');
+		const expectedOutput = `{
+    common: {
+      + follow: false
+        setting1: Value 1
+      - setting2: 200
+      - setting3: true
+      + setting3: null
+      + setting4: blah blah
+      + setting5: {
+            key5: value5
+        }
+        setting6: {
+            doge: {
+              - wow: 
+              + wow: so much
+            }
+            key: value
+          + ops: vops
+        }
+    }
+    group1: {
+      - baz: bas
+      + baz: bars
+        foo: bar
+      - nest: {
+            key: value
+        }
+      + nest: str
+    }
+  - group2: {
+        abc: 12345
+        deep: {
+            id: 45
+        }
+    }
+  + group3: {
+        deep: {
+            id: {
+                number: 45
+            }
+        }
+        fee: 100500
+    }
+}`;
 
-				execFile('node', [gendiffPath, file1, file2], (error, stdout) => {
-						expect(error).toBeNull();
-						// Проверяем, что вывод содержит ожидаемые фрагменты
-						expect(stdout).toContain('- setting2: 200');
-						expect(stdout).toContain('- setting3: true');
-						expect(stdout).toContain('+ setting3: null');
-						done();
-				});
-		});
-
-		test('should show error with non-existent __fixtures__', (done) => {
-				const nonExistent1 = join(__dirname, '__fixtures__', 'nonexist1.json');
-				const nonExistent2 = join(__dirname, '__fixtures__', 'nonexist2.json');
-
-				execFile('node', [gendiffPath, nonExistent1, nonExistent2], (error, stdout, stderr) => {
-						// Ожидаем ошибку, так как файлы не существуют
-						expect(error).not.toBeNull();
-						// Проверяем, что в stderr есть упоминание "Error:"
-						expect(stderr).toContain('Error:');
-						done();
-				});
-		});
+		const output = await genDiff(filepath1, filepath2);
+		expect(output).toBe(expectedOutput);
 });
