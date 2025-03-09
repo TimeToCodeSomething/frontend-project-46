@@ -1,6 +1,9 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
+  "bin": {
+    "gendiff": "./gendiff.js"
+  },
   "description": "[![Actions Status](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions)",
   "homepage": "https://github.com/TimeToCodeSomething/frontend-project-46#readme",
   "bugs": {
