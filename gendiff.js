@@ -1,12 +1,11 @@
 #!/usr/bin/env node
-
 import {Command} from 'commander';
 import parseFile from './parsers.js';
 import buildDiff from './buildDiff.js';
 import formatDiff from './formatDiff.js';
 import path from 'path';
-import {fileURLToPath} from 'url';
 
+// Основная функция, возвращающая результат сравнения
 export async function genDiff(filepath1, filepath2) {
     const fullPath1 = path.resolve(filepath1);
     const fullPath2 = path.resolve(filepath2);
@@ -18,7 +17,8 @@ export async function genDiff(filepath1, filepath2) {
     return formatDiff(diffTree);
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+// Запускаем CLI-логику, если этот файл вызывается напрямую
+if (process.argv[1] && (process.argv[1].endsWith('gendiff.js')) || (process.argv[1].endsWith('gendiff'))) {
     const program = new Command();
     program
         .name('gendiff')
@@ -26,7 +26,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         .description('Compares two configuration files and shows a difference.')
         .option('-f, --format [type]', 'output format')
         .arguments('<filepath1> <filepath2>')
-        .action(async (filepath1, filepath2) => {
+        .action(async (filepath1, filepath2, options) => {
             try {
                 const output = await genDiff(filepath1, filepath2);
                 console.log(output);
