@@ -22,7 +22,7 @@ export default function buildDiff(obj1, obj2) {
     }
 
     return {
-      key, type: 'changed', oldValue: value1, newValue: value2
+      key, type: 'changed', oldValue: value1, newValue: value2,
     };
   });
 }
