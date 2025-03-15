@@ -9,8 +9,8 @@ export default function parseFile(filepath) {
 
   if (ext === '.json') {
     return JSON.parse(data);
-  } else if (ext === '.yaml' || ext === '.yml') {
+  } if (ext === '.yaml' || ext === '.yml') {
     return yaml.load(data);
   }
-    throw new Error(`Unsupported file extension: ${ext}`);
+  throw new Error(`Unsupported file extension: ${ext}`);
 }

@@ -21,7 +21,8 @@ export default function buildDiff(obj1, obj2) {
       return { key, type: 'unchanged', value: value1 };
     }
 
-    return { key, type: 'changed', oldValue: value1, newValue: value2 };
-
+    return {
+      key, type: 'changed', oldValue: value1, newValue: value2
+    };
   });
 }
