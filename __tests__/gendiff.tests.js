@@ -1,16 +1,16 @@
+import { test, expect } from '@jest/globals';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import genDiff from '../gendiff.js';
-import { test, expect } from '@jest/globals';
+import gendiffDefault from '../gendiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-test('gendiff should produce expected output', async () => {
-		const filepath1 = path.join(__dirname, '__fixtures__', 'file1.json');
-		const filepath2 = path.join(__dirname, '__fixtures__', 'file2.json');
+test('gendiff should produce expected output', () => {
+	const filepath1 = path.join(__dirname, '__fixtures__', 'file1.json');
+	const filepath2 = path.join(__dirname, '__fixtures__', 'file2.json');
 
-		const expectedOutput = `{
+	const expectedOutput = `{
     common: {
       + follow: false
         setting1: Value 1
@@ -55,6 +55,6 @@ test('gendiff should produce expected output', async () => {
     }
 }`;
 
-		const output = await genDiff(filepath1, filepath2);
-		expect(output).toBe(expectedOutput);
+	const output = gendiffDefault(filepath1, filepath2);
+	expect(output).toBe(expectedOutput);
 });
