@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import formatters from './formatters/index.js';
 import parseFile from './parsers.js';
 import buildDiff from './buildDiff.js';
