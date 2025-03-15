@@ -1,12 +1,12 @@
-import genDiff from '../gendiff.js';
-import {describe, test, expect} from '@jest/globals';
-import {fileURLToPath} from 'url';
+import { describe, test, expect } from '@jest/globals';
+import { fileURLToPath } from 'url';
 import path from 'path';
+import gendiffDefault from '../gendiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-describe('genDiff plain format', () => {
+describe('gendiffDefault plain format', () => {
   const filepath1 = path.join(__dirname, '.', '__fixtures__', 'file1.json');
   const filepath2 = path.join(__dirname, '.', '__fixtures__', 'file2.json');
   const expectedOutput = `Property 'common.follow' was added with value: false
@@ -22,7 +22,7 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
   test('should produce correct plain format output', async () => {
-    const diff = await genDiff(filepath1, filepath2, 'plain');
+    const diff = await gendiffDefault(filepath1, filepath2, 'plain');
     expect(diff).toEqual(expectedOutput);
   });
 });

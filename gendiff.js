@@ -1,9 +1,9 @@
 #!/usr/bin/env node
+import { Command } from 'commander';
+import path from 'path';
 import formatters from './formatters/index.js';
-import {Command} from 'commander';
 import parseFile from './parsers.js';
 import buildDiff from './buildDiff.js';
-import path from 'path';
 
 export function genDiff(filepath1, filepath2, format = 'stylish') {
   const fullPath1 = path.resolve(filepath1);
@@ -18,8 +18,8 @@ export function genDiff(filepath1, filepath2, format = 'stylish') {
 
 // CLI-логика
 if (
-  process.argv[1] &&
-  (process.argv[1].endsWith('gendiff.js') || process.argv[1].endsWith('gendiff'))
+  process.argv[1]
+  && (process.argv[1].endsWith('gendiff.js') || process.argv[1].endsWith('gendiff'))
 ) {
   const program = new Command();
   program

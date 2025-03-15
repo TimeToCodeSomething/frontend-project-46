@@ -1,6 +1,6 @@
-import {test, expect} from '@jest/globals';
+import { test, expect } from '@jest/globals';
 import path from 'path';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 import gendiffDefault from '../gendiff.js';
 
 const __filename = fileURLToPath(import.meta.url);

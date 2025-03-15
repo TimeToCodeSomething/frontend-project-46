@@ -1,11 +1,10 @@
 import stringify from './stringify.js';
 
 export default function formatDiff(diffTree, depth = 1) {
-  const indent = '    '.repeat(depth);
   const bracketIndent = '    '.repeat(depth - 1);
 
-  const lines = diffTree.flatMap(item => {
-    const {key, type} = item;
+  const lines = diffTree.flatMap((item) => {
+    const { key, type } = item;
     switch (type) {
       case 'added':
         return `${bracketIndent}  + ${key}: ${stringify(item.value, depth + 1)}`;
@@ -26,4 +25,4 @@ export default function formatDiff(diffTree, depth = 1) {
   });
 
   return `{\n${lines.join('\n')}\n${bracketIndent}}`;
-};
+}
