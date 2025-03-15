@@ -1,5 +1,5 @@
 import genDiff from '../gendiff.js';
-import { describe, test, expect } from "@jest/globals";
+import { describe, test, expect } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path from 'path';
 

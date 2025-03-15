@@ -17,7 +17,6 @@ export function genDiff(filepath1, filepath2, format = 'stylish') {
 
 // CLI-логика
 if (process.argv[1] && (process.argv[1].endsWith('gendiff.js') || process.argv[1].endsWith('gendiff'))) {
-    const { Command } = await import('commander');
     const program = new Command();
     program
         .name('gendiff')
