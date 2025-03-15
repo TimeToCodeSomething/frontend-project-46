@@ -1,24 +1,22 @@
-#!/usr/bin/env node
 import formatters from './formatters/index.js';
-import {Command} from 'commander';
 import parseFile from './parsers.js';
 import buildDiff from './buildDiff.js';
 import path from 'path';
 
-// Основная функция, возвращающая результат сравнения
-export async function genDiff(filepath1, filepath2, format = 'stylish') {
+export function genDiff(filepath1, filepath2, format = 'stylish') {
     const fullPath1 = path.resolve(filepath1);
     const fullPath2 = path.resolve(filepath2);
 
-    const data1 = await parseFile(fullPath1);
-    const data2 = await parseFile(fullPath2);
+    const data1 = parseFile(fullPath1);
+    const data2 = parseFile(fullPath2);
 
     const diffTree = buildDiff(data1, data2);
     return formatters(diffTree, format || 'stylish');
 }
 
-// Запускаем CLI-логику, если этот файл вызывается напрямую
-if (process.argv[1] && (process.argv[1].endsWith('gendiff.js')) || (process.argv[1].endsWith('gendiff'))) {
+// CLI-логика
+if (process.argv[1] && (process.argv[1].endsWith('gendiff.js') || process.argv[1].endsWith('gendiff'))) {
+    const { Command } = await import('commander');
     const program = new Command();
     program
         .name('gendiff')
@@ -26,9 +24,9 @@ if (process.argv[1] && (process.argv[1].endsWith('gendiff.js')) || (process.argv
         .description('Compares two configuration files and shows a difference.')
         .option('-f, --format [type]', 'output format')
         .arguments('<filepath1> <filepath2>')
-        .action(async (filepath1, filepath2, options) => {
+        .action((filepath1, filepath2, options) => {
             try {
-                const output = await genDiff(filepath1, filepath2, options.format);
+                const output = genDiff(filepath1, filepath2, options.format);
                 console.log(output);
             } catch (error) {
                 console.error(`Error: ${error.message}`);
