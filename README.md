@@ -1,9 +1,9 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions)
+[![Actions Status](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/hexlet-check.yml)
 
 ### My tests and linter status:
 
-[![Node CI](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions)
+[![Node CI](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml)
 
 Step 1 & Step 2:
 https://asciinema.org/a/DlWpqRkJCMJjaRSiJcJMYB3ND
