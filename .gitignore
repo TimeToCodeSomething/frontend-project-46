@@ -7,7 +7,6 @@ coverage/
 # файлы/папки среды разработки
 .idea/
 .vscode/
-.github/
 
 # системные файлы macOS
 .DS_Store
