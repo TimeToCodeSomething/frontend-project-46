@@ -36,13 +36,4 @@ jobs:
       - run: make install
       - run: make lint
       - run: make test
-
-      - name: Test & publish code coverage
-        uses: qltysh/qlty-action
-        # https://github.com/qltysh/qlty-action
-        env:
-          QLTY_COVERAGE_TOKEN: ${{ secrets.QLTY_COVERAGE_TOKEN }}
-        with:
-          coverage-command: make test-coverage
-          debug: true
-
+      - run: make test-coverage
