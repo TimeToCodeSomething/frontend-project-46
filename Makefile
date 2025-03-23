@@ -14,7 +14,7 @@ test:
 	npm test
 
 test-coverage:
-	npm test -- --coverage --coverageProvider=v8
+	npm run test-coverage
 
 lint:
 	npx eslint .
@@ -22,4 +22,4 @@ lint:
 publish:
 	npm publish
 
-.PHONY: test
+.PHONY: install run deps-install deps-update test test-coverage lint publish
