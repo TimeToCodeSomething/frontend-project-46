@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/hexlet-check.yml)
 
 ### My tests and linter status:
-
+[![Node CI](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml)
 
 ### CodeClimate:
 [![Maintainability](https://qlty.sh/badges/73ddc355-97f6-4f87-a27e-63f1374b56f6/maintainability.svg)](https://qlty.sh/gh/TimeToCodeSomething/projects/frontend-project-46)
