@@ -3,7 +3,7 @@
 
 ### My tests and linter status:
 
-[![Node CI](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows//actions/workflows/nodejs.yml)
+[![Node CI](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions)
 
 Step 1 & Step 2:
 https://asciinema.org/a/DlWpqRkJCMJjaRSiJcJMYB3ND
