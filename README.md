@@ -1,5 +1,6 @@
 ### Hexlet tests and linter status:
 
+
 ### My tests and linter status:
 [![Node CI](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/TimeToCodeSomething/frontend-project-46/actions/workflows/nodejs.yml)
 
