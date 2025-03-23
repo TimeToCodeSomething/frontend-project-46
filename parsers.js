@@ -14,3 +14,4 @@ export default function parseFile(filepath) {
   }
   throw new Error(`Unsupported file extension: ${ext}`);
 }
+
