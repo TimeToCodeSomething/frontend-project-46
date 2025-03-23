@@ -38,10 +38,11 @@ jobs:
       - run: make test
 
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v5.0.0
+        uses: qltysh/qlty-action
+        # https://github.com/qltysh/qlty-action
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.QLTY_COVERAGE_TOKEN }}
+          QLTY_COVERAGE_TOKEN: ${{ secrets.QLTY_COVERAGE_TOKEN }}
         with:
-          coverageCommand: make test-coverage
+          coverage-command: make test-coverage
           debug: true
 
